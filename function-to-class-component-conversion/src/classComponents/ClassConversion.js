@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 
 class ClassConversion extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            name: localStorage.getItem("Name") || ""
+            inputVal: localStorage.getItem("Name") || ""
         }
-
+        this.inputChangeHandler =this.inputChangeHandler.bind(this);
+        console.log(this.inputChangeHandler)
     }
 
-    inputChangeHandler = (event) => {
+    inputChangeHandler(event) {
         // console.log(event.target.value);
-        this.setState({name: event.target.value});
+        this.setState({inputVal: event.target.value});
         // console.log(this.state.name);
     }
 
     componentDidUpdate() {
-        localStorage.setItem("Name", this.state.name)
+        localStorage.setItem("Name", this.state.inputVal)
     }
 
     render() {
@@ -25,9 +26,9 @@ class ClassConversion extends Component {
             <div>
                 <form>
                     <label htmlFor="name">Name: </label>
-                    <input onChange={this.inputChangeHandler} id="name" />
+                    <input onChange={this.inputChangeHandler} value={this.state.inputVal} id="name" />
                 </form>
-                {this.state.name ? <strong>Hello {this.state.name}</strong> : 'Please type your name'}
+                {this.state.inputVal ? <strong>Hello {this.state.inputVal}</strong> : 'Please type your name'}
             </div>
         )
     }
