@@ -20,8 +20,7 @@ function UseState() {
             <label htmlFor="name">Name: </label>
             <input value={name} onChange={inputChangeHandler} id="name" />
           </form>
-          {/* {name ? <strong>Hello {name}</strong> : 'Please type your name'} */}
-          <p>{name}</p>
+          {name ? <strong>Hello {name}</strong> : 'Please type your name'}
         </div>
     )
 }
